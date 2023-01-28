@@ -1,0 +1,45 @@
+{%extends "base.html"%}
+{%block mainBody%}
+{% load my_tags %}
+<h1>繼承者</h1>
+{{name}}<br>
+skill:{{skill_list.0}},{{skill_list.1}},{{skill_list.2}}<br>
+python:{{skill_dict.python}},mysql:{{skill_dict.mysql}},js:{{skill_dict.js}}
+{#註解註解#}
+<br>
+{% if age > 30  %}
+老人
+{% elif age > 20  %}
+年輕人
+{% else  %}
+小屁孩
+{% endif %}
+<br>
+
+{% for i in skill_list %}
+{{i}}
+{% endfor %}
+<br>
+
+{% for k,v in skill_dict.items %}
+{{k}}:{{v}}
+{% endfor %}
+
+{% for i in empty %}
+{% empty %}
+<p>空</p>
+{% endfor %}
+<br>
+
+{% for k,v in skill_dict.items %}
+{{k | upper}}:{{v | lower}}
+{% endfor %}
+
+<p>自定義標籤 {% mul 11 22 33 %}</p>
+{% my_input "username_input" "UserName" %}
+
+<p>總分(學分*該科成績):{{score | my_filter:3}}</p>
+
+
+
+{%endblock mainBody%}
